@@ -39,7 +39,8 @@
   2. Identify the branching factor, i.e. how does the number of nodes change from level to the next.
     * Again, keep an eye out on the worst-case scenario.
   * e.g. `m` height and multiply by `2` for each level => `O(2^m)` for time, `O(m)` for space.
-* 
+* How to code recursive functions:
+  * Think of the base case(s), how to add the current recursive call to it.
 ```
 "Try to think of your recursive functions in terms of a tree... from there I can use that tree to not only implement a brute-force, but to also recognize where I an optimize that brute-force."
 ```
@@ -48,12 +49,19 @@
 * Yet again another small note for CP people, considering your function arguments are `(i, q)` i.e. `O(i * q)`, if `i * q > 100M`, then you can reasonably assume it can't be solved in less than `1 Second`, unless you do some magic.
   * I think in some Online Judges it's `40M`.
   * This is without calculating internal recursive function complexity (like vector copy if it exists).
+  * In general, if you visualize your recursion using a call tree, the complexity would be the `branching factor` to the `height` power.
+    * \+ any other operation in the logic of the function itself.
 * About XSum problem:
   * canSum -> Can you do it? yes/no -> Decision problem
   * howSum -> How will you do it? -> Combinatoric problem
   * bestSum -> What is the best way to do it? -> Optimization Problem
+```
+When you make your recursive call you assume your function works.
+```
 ---
 ---
-* Took `5H15M`, to finish `2H12M`.
+* Took `7H45M`, to finish `2H40M`.
 * I take notes (this file), and write code, _which is the way to do these stuff_, but regardless you might have less-time... especially if you don't use C++.
 * It looks like the main "styles" covered here are memoization & tabulation methods.
+* This course is more intended for _I guess_ interview like questions, I took it for problem solving / CP, so we will see how we do in the long run.
+  * Hopefully update this repo with DP problems.
