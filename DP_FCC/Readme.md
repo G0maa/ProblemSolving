@@ -58,10 +58,20 @@
 ```
 When you make your recursive call you assume your function works.
 ```
+* In tabulation method, instead of doing the prolem recusively, we are doing it iteratively by building a table.
+* About Alvin's `Tabulation Recipe` for DP:
+  1. Visualize the problem as a table.
+  2. Size the table basedo on the inputs.
+  3. Initialize the table with default values, that are close to the problem outputs.
+  4. Seed the trivial answer ?base-case? into the table.
+  5. Iterate through the table.
+  6. Fill further positions based on the current position. ?similar branching-factor in memo?
 ---
 ---
-* Took `7H45M`, to finish `2H40M`.
+* Took `10H20M`, to finish `3H38M`.
 * I take notes (this file), and write code, _which is the way to do these stuff_, but regardless you might have less-time... especially if you don't use C++.
 * It looks like the main "styles" covered here are memoization & tabulation methods.
+  * I suppose there are a few other styles/methods:
+    * Maybe-Do. [Arabic Playlist](https://www.youtube.com/playlist?list=PLPt2dINI2MIattDutu7IOAMlUuLeN8k2p)
 * This course is more intended for _I guess_ interview like questions, I took it for problem solving / CP, so we will see how we do in the long run.
   * Hopefully update this repo with DP problems.

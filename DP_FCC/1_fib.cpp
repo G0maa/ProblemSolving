@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#define fromTo(var, from, to)          for(int var = from; var < to; ++var)
 typedef long long       ll;
 
 // Just making sure I don't screw stuff up :)
@@ -40,6 +41,22 @@ ll fibMemo(int n) {
     return mem[n];
 }
 
+// O(n) time, O(n) space 
+ll fibTabu(int n) {
+    vector<ll> arr(n + 1);
+    arr[0] = 0;
+    arr[1] = 1;
+
+    fromTo(i, 0, n + 1) {
+        if (i + 1<= n)
+            arr[i + 1] += arr[i];
+        
+        if (i + 2 <= n)
+            arr[i + 2] += arr[i];
+    }
+    return arr[n];
+}
+
 int main() {
     // Print output after excution => Less time, remove if needed.
     ios_base::sync_with_stdio(false);
@@ -48,6 +65,7 @@ int main() {
     cout << fib(6) << '\n';
     cout << fib(7) << '\n';
     cout << fibMemo(50) << '\n';
+    cout << fibTabu(50) << '\n';
     // cout << globalCounter << '\n';
 
     cout << "Be Proactive : )";

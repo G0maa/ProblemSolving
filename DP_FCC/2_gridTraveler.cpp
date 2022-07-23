@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#define fromTo(var, from, to)          for(int var = from; var < to; ++var)
 typedef long long       ll;
 // Just making sure I don't screw stuff up :)
 // int globalCounter = 0;
@@ -46,6 +47,30 @@ ll gridTravellerMemo(int n, int m) {
     return mem[n][m];
 }
 
+// O(nm) time, O(nm) space.
+ll gridTravellerTabu(int n, int m) {
+    vector<vector<int>> arr(n + 1, vector<int>(m + 1));
+
+    // You could kind of get the gist that,
+    // [1][1] is the base case,
+    // row & column zero are the invalid cases.
+    // and you move through the table with the let's call it "branching factor",
+    // mhm... branching factors do have some kind of base case innit?
+    arr[1][1] = 1;
+
+    fromTo(i, 0, n + 1) {
+        fromTo(j, 0, m + 1) {
+            if(j + 1 <= m)
+                arr[i][j + 1] += arr[i][j];
+
+            if(i + 1 <= n)
+                arr[i + 1][j] += arr[i][j];
+        }
+    }
+
+    return arr[n][m];
+}
+
 int main() {
     // Print output after excution => Less time, remove if needed.
     ios_base::sync_with_stdio(false);
@@ -56,6 +81,7 @@ int main() {
     // cout << gridTraveller(3, 2) << '\n';
     cout << gridTraveller(5, 5) << '\n';
     cout << gridTravellerMemo(5, 5) << '\n';
+    cout << gridTravellerTabu(5, 5) << '\n';
     // cout << globalCounter << '\n';
     // cout << globalCounter1 << '\n';
 
