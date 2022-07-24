@@ -60,15 +60,15 @@ When you make your recursive call you assume your function works.
 ```
 * In tabulation method, instead of doing the prolem recusively, we are doing it iteratively by building a table.
 * About Alvin's `Tabulation Recipe` for DP:
-  1. Visualize the problem as a table, it has to represent some kind of _again_ overlapping sub-problems... ?is it mostly the question??
+  1. Visualize the problem as a table, it has to represent some kind of _again_ overlapping sub-problems... ?is it mostly one of the function arguments that gets minimized??
   2. Size the table based on the inputs.
-  3. Initialize the table with default values, that are close to the problem outputs. => ture/false, zeros...
+  3. Initialize the table with default values, that are close to the problem outputs. => ture/false, integers,...
   4. Seed the trivial answer ?base-case? into the table.
   5. Iterate through the table.
   6. Fill further positions based on the current position. ?similar branching-factor in memo?
 ---
 ---
-* Took `10H35M`, to finish `3H38M`.
+* Took `13H35M`, to finish `4H38M`.
 * I take notes (this file), and write code, _which is the way to do these stuff_, but regardless you might have less-time... especially if you don't use C++.
 * It looks like the main "styles" covered here are memoization & tabulation methods.
   * I suppose there are a few other styles/methods:

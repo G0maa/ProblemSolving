@@ -77,6 +77,35 @@ bool canConstructMemo(string target) {
     return false;
 }
 
+// I don't think I'd be able to observe
+// such a solution on my own. :c
+// This problem in particular is much different
+// in its tabulation solution from the others.
+// O(m^2 * n) time, O(m) space.
+bool canConstructTabu(string target) {
+    int siz = sz(target) + 1;
+    vector<bool> tabu(siz);
+
+    tabu[0] = true;
+    // a b c d e f 'siz - 1'
+    // 1 0 0 0 0 0 0
+    fromTo(i, 0, siz) {
+        if(tabu[i]) {
+            fromTo(j, 0, wordsCount) {
+                string targetSlice = "";
+                // potenial segmentation fault bug
+                fromTo(k, i, sz(words[j]) + i)
+                    targetSlice += target[k];
+                
+                if(targetSlice == words[j])
+                    tabu[i + sz(words[j])] = true;
+            }
+        }
+    }
+
+    return tabu[siz - 1];
+}
+
 int main() {
     // Print output after excution => Less time, remove if needed.
     ios_base::sync_with_stdio(false);
@@ -96,7 +125,7 @@ int main() {
         fromTo(i, 0, wordsCount)
             cin >> words[i];
         
-        bool ans = canConstructMemo(target);
+        bool ans = canConstructTabu(target);
         cout << (ans ? "True\n" : "False\n");
     }
     cout << "\nBe Proactive : )\n";
