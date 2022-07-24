@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Just needed for printing logic
+#define sz(i)               (int) i.size()
 #define fromTo(var, from, to)          for(int var = from; var < to; ++var)
 typedef long long ll;
 // Just making sure I don't screw stuff up :)
@@ -66,6 +66,30 @@ vector<int> bestSumMemo (int m) {
     return mem[m];
 }
 
+// O(n*m^2) for time, O(m^2) for space.
+vector<int> bestSumTabu(int m) {
+    vector<vector<int>> tabu(m + 1);
+
+    tabu[0] = { 0 };
+
+    fromTo(i, 0, m + 1) {
+        if(sz(tabu[i]) >= 1) {
+            fromTo(j, 0, enterdNumCount) {
+                if(i + arr[j] <= m) {
+                    // If next position is embty or 
+                    // current position + addition size is less than next position current size.
+                    if(sz(tabu[i + arr[j]]) == 0 || sz(tabu[i]) + 1 < sz(tabu[i + arr[j]])) {
+                        tabu[i + arr[j]] = tabu[i]; // copy
+                        tabu[i + arr[j]].push_back(arr[j]);
+                    }
+                }
+            }
+        }
+    }
+
+    return tabu[m];
+}
+
 int main() {
     // Print output after excution => Less time, remove if needed.
     ios_base::sync_with_stdio(false);
@@ -87,10 +111,10 @@ int main() {
         fromTo(i, 0, enterdNumCount)
             cin >> arr[i];
 
-        vector<int> ans = bestSumMemo(targetSum);
+        vector<int> ans = bestSumTabu(targetSum);
         
         // Note, we start from 1, empty line = no answer,
-        if((int) ans.size() == 1)
+        if((int) ans.size() <= 1)
             cout << "-1";
 
         fromTo(i, 1, (int) ans.size())

@@ -1,4 +1,6 @@
-True
-True
-False
-True
+7 
+3 5 
+4 4 
+25 25 25 25 
+
+Be Proactive : )

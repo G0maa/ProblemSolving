@@ -68,10 +68,11 @@ When you make your recursive call you assume your function works.
   6. Fill further positions based on the current position. ?similar branching-factor in memo?
 ---
 ---
-* Took `10H20M`, to finish `3H38M`.
+* Took `10H35M`, to finish `3H38M`.
 * I take notes (this file), and write code, _which is the way to do these stuff_, but regardless you might have less-time... especially if you don't use C++.
 * It looks like the main "styles" covered here are memoization & tabulation methods.
   * I suppose there are a few other styles/methods:
     * Maybe-Do. [Arabic Playlist](https://www.youtube.com/playlist?list=PLPt2dINI2MIattDutu7IOAMlUuLeN8k2p)
 * This course is more intended for _I guess_ interview like questions, I took it for problem solving / CP, so we will see how we do in the long run.
   * Hopefully update this repo with DP problems.
+* There's a small note, the DP styles we studied so far _kind of_ work on small numbers **in case of CP**.
