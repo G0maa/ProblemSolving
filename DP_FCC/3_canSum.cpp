@@ -24,7 +24,7 @@ bool canSum (int m) {
     if(m < 0)
         return false;
     
-    for(int i = 0; i < sz(numArr); ++i)
+    fromTo(i, 0, numCount)
         if(canSum(m - numArr[i]) == true)
             return true;
 
@@ -45,7 +45,7 @@ bool canSumMemo (int m) {
     if(mem[m] != -1)
         return mem[m];
 
-    for(int i = 0; i < numCount; ++i) {
+    fromTo(i, 0, numCount) {
         if(canSumMemo(m - numArr[i]) == true) {
             mem[m] = true;
             return true;
@@ -94,10 +94,10 @@ int main() {
         fromTo(i, 0, numCount)
             cin >> numArr[i];
         
-        bool ans = canSumMemo(target);
+        bool ans = canSumTabu(target);
         cout << (ans ? "True\n" : "False\n");
     }
-    cout << "Be Proactive : )";
+    cout << "\nBe Proactive : )\n";
     return 0;
 }
 
