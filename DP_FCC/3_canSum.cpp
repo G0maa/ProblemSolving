@@ -2,6 +2,10 @@
 using namespace std;
 
 typedef long long ll;
+
+#define sz(i)               (int) i.size()
+#define fromTo(var, from, to)          for(int var = from; var < to; ++var)
+
 // Just making sure I don't screw stuff up :)
 // int globalCounter = 0;
 
@@ -11,15 +15,17 @@ typedef long long ll;
 // Solution => Go Greedy or Go Home.
 
 // O(n^m) time, O(m) space.
-vector<int> arr;
+int numCount;
+int maxNumCount = 301;
+vector<int> numArr(maxNumCount);
 bool canSum (int m) {
     if(m == 0)
         return true;
     if(m < 0)
         return false;
     
-    for(int i = 0; i < (int) arr.size(); ++i)
-        if(canSum(m - arr[i]) == true)
+    for(int i = 0; i < sz(numArr); ++i)
+        if(canSum(m - numArr[i]) == true)
             return true;
 
     return false;
@@ -39,9 +45,8 @@ bool canSumMemo (int m) {
     if(mem[m] != -1)
         return mem[m];
 
-    bool flag = false;
-    for(int i = 0; i < (int) arr.size(); ++i) {
-        if(canSumMemo(m - arr[i]) == true) {
+    for(int i = 0; i < numCount; ++i) {
+        if(canSumMemo(m - numArr[i]) == true) {
             mem[m] = true;
             return true;
         }
@@ -51,15 +56,60 @@ bool canSumMemo (int m) {
     return false;
 }
 
+// m = sz(arr)
+// O(nm) time, O(n) space.
+bool canSumTabu(int n) {
+    vector<bool> tabu(n + 1);
+
+    tabu[0] = true;
+
+    fromTo(i, 0, n + 1) {
+        if(tabu[i]) {
+            fromTo(j, 0, numCount) {
+                if(i + numArr[j] <= n)
+                    tabu[i + numArr[j]] = true;
+            }
+        }
+    }
+
+    return tabu[n];
+}
+
 int main() {
     // Print output after excution => Less time, remove if needed.
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    // I'm not %100 sure about this assignment.
-    arr = {7, 14};
+    // Non-relative address is needed for debugging.
+    freopen("D:\\3_Studies\\MyGithubFolder\\2_ProblemSolving\\ProblemSolving\\DP_FCC\\in.txt", "r", stdin);
+    freopen("D:\\3_Studies\\MyGithubFolder\\2_ProblemSolving\\ProblemSolving\\DP_FCC\\out.txt", "w", stdout);
 
-    cout << canSumMemo(300) << '\n';
+    int t;
+    cin >> t;
+    while(t--) {
+        mem.assign(maxNumCount, -1);
+
+        int target;
+        cin >> numCount >> target;
+        fromTo(i, 0, numCount)
+            cin >> numArr[i];
+        
+        bool ans = canSumMemo(target);
+        cout << (ans ? "True\n" : "False\n");
+    }
     cout << "Be Proactive : )";
     return 0;
 }
+
+// in.txt
+// 5
+// 2 7
+// 2 3
+// 4 7
+// 5 3 4 7
+// 2 7
+// 2 4
+// 3 8
+// 2 3 5
+// 2 300
+// 7 14
