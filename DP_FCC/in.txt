@@ -1,15 +1,11 @@
-6
-5 purple
-purp p ur le purpl
-7 abcdef
-ab abc cd def abcd ef c
-7 skateboard
-bo rd ate t ska sk boar
-7 enterapotentpot
-a p ent enter ot o t
-6 eeeeeeeeeez
-e
-ee
-eee
-eeee
-eeeee
+5
+2 7
+2 3
+4 7
+5 3 4 7
+2 7
+2 4
+3 8
+2 3 5
+2 300
+7 14

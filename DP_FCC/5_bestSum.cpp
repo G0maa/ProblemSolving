@@ -95,9 +95,9 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    // Non-relative address is needed for debugging.
-    freopen("D:\\3_Studies\\MyGithubFolder\\2_ProblemSolving\\ProblemSolving\\DP_FCC\\in.txt", "r", stdin);
-    freopen("D:\\3_Studies\\MyGithubFolder\\2_ProblemSolving\\ProblemSolving\\DP_FCC\\out.txt", "w", stdout);
+    // Non-relative address might be needed in case of debugging.
+    freopen("in.txt", "r", stdin);
+    freopen("out.txt", "w", stdout);
 
     int t;
     cin >> t;
