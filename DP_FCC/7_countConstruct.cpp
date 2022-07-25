@@ -74,6 +74,30 @@ int countConstructMemo(string target) {
     return ans;
 }
 
+// O(m^2 * n) time, O(m) space.
+int countConstructTabu(string target) {
+    int siz = sz(target) + 1;
+    vector<int> tabu(siz); // Visualizing as a table & filling with "default value"
+
+    tabu[0] = 1; // seed value
+
+    // Iterating through the table
+    fromTo(i, 0, siz) {
+        if(tabu[i] != 0) {
+            fromTo(j, 0, wordsCount) {
+                string targetSlice = "";
+                // potenial segmentation fault bug
+                fromTo(k, i, sz(words[j]) + i)
+                    targetSlice += target[k];
+                
+                if(targetSlice == words[j])
+                    tabu[i + sz(words[j])] += tabu[i]; // NOT ONE
+            }
+        }
+    }
+
+    return tabu[siz - 1];
+}
 
 int main() {
     // Print output after excution => Less time, remove if needed.
@@ -94,7 +118,7 @@ int main() {
         fromTo(i, 0, wordsCount)
             cin >> words[i];
         
-        int ans = countConstructMemo(target);
+        int ans = countConstructTabu(target);
         cout << ans << '\n';
     }
     cout << "\nBe Proactive : )\n";

@@ -97,6 +97,9 @@ bool canConstructTabu(string target) {
                 fromTo(k, i, sz(words[j]) + i)
                     targetSlice += target[k];
                 
+                // Through out tabulation problems, this logic
+                // and the starting values of `tabu` 
+                // -Will be mainly the ones evolving a lot.
                 if(targetSlice == words[j])
                     tabu[i + sz(words[j])] = true;
             }

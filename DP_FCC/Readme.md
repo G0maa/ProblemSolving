@@ -66,9 +66,18 @@ When you make your recursive call you assume your function works.
   4. Seed the trivial answer ?base-case? into the table.
   5. Iterate through the table.
   6. Fill further positions based on the current position. ?similar branching-factor in memo?
+* Final advices from `Alvin`:
+  * Notice any overalapping sub-problems.
+  * Focus on the input to the problem particuraly its type, from there:
+  * decide what's the trivially smallest input (empty string, empty array, zero, false,...) == Base case.
+  * Relate your Base case ^, towards your larger inputs.
+  * Now:
+    * Think recursively Memoization,
+    * or iteratively using Tabulaiton.
+  * Take it slow, draw a visual tree/table...
 ---
 ---
-* Took `13H35M`, to finish `4H38M`.
+* Took `14H40M`, to finish `5H10M` i.e. entire course.
 * I take notes (this file), and write code, _which is the way to do these stuff_, but regardless you might have less-time... especially if you don't use C++.
 * It looks like the main "styles" covered here are memoization & tabulation methods.
   * I suppose there are a few other styles/methods:

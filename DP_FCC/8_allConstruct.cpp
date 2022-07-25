@@ -54,6 +54,35 @@ vector<vector<string>> allConstruct(string target) {
     return ans;
 }
 
+// O(~n^m) time, O(~n^m) space.
+vector<vector<string>> allConstructTabu(string target) {
+    int siz = sz(target) + 1;
+    // This... looks scary.
+    vector<vector<vector<string>>> tabu(siz);
+
+    // I guess closest line to JS in the entire course. 
+    tabu[0] = { { } };
+
+        fromTo(i, 0, siz) {
+        if(sz(tabu[i]) != 0) {
+            fromTo(j, 0, wordsCount) {
+                string targetSlice = "";
+                // potenial segmentation fault bug
+                fromTo(k, i, sz(words[j]) + i)
+                    targetSlice += target[k];
+                
+                if(targetSlice == words[j]) {
+                    fromTo(k, 0, sz(tabu[i])) {
+                        tabu[i + sz(words[j])].push_back(tabu[i][k]);
+                        tabu[i + sz(words[j])].back().push_back(words[j]);
+                    }
+                }
+            }
+        }
+    }
+
+    return tabu[siz - 1];
+}
 
 int main() {
     // Print output after excution => Less time, remove if needed.
@@ -67,14 +96,15 @@ int main() {
     int t;
     cin >> t;
     while(t--) {
-        // mem.clear();
-
         string target;
         cin >> wordsCount >> target;
         fromTo(i, 0, wordsCount)
             cin >> words[i];
         
-        vector<vector<string>> ans = allConstruct(target);
+        vector<vector<string>> ans = allConstructTabu(target);
+
+        if(sz(ans) <= 0)
+            cout << "-1\n";
         fromTo(i, 0, sz(ans)) {
             // Reversed, I guess a to-do fix.
             fromTo(j, 0, sz(ans[i])) {
@@ -88,16 +118,16 @@ int main() {
 }
 
 // in.txt:
-// 5
+// 6
 // 5 purple
 // purp p ur le purpl
-// 5 abcdef
+// 7 abcdef
 // ab abc cd def abcd ef c
 // 7 skateboard
 // bo rd ate t ska sk boar
 // 7 enterapotentpot
 // a p ent enter ot o t
-// 6 eeeeeeeeeeeeeeeeeeeeeeeeeeeeef
+// 6 eeeeeeeeeez
 // e
 // ee
 // eee
